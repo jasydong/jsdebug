@@ -12,6 +12,7 @@
 		$(function(){
 
 			function test01(len) {
+				//debugger;
 				for (var i=0; i<len; i++) {
 					$('.content').append('<div>text '+i+'</div>');
 				}
@@ -25,9 +26,16 @@
 				$('.content').append(html);
 			}
 
+			function testajax() {
+				$.get('js/sample-data.js', function(data){
+					console.log(data);
+				});
+			}
+
 			var start = new Date().getTime();
 
 			test01(5000);
+			//testajax();
 
 			var end = new Date().getTime();
 
