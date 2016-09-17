@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS代码调试-控制台</title>
+</head>
+<body>
+	<div class="content"></div>
+	<script src='js/jquery-3.1.0.min.js'></script>
+	<script>
+
+		$(function(){
+
+			function test01(len) {
+				for (var i=0; i<len; i++) {
+					$('.content').append('<div>text '+i+'</div>');
+				}
+			}
+
+			function test02(len) {
+				var html = '';
+				for (var i=0; i<len; i++) {
+					html += '<div>text '+i+'</div>';
+				}
+				$('.content').append(html);
+			}
+
+			var start = new Date().getTime();
+
+			test01(5000);
+
+			var end = new Date().getTime();
+
+			console.log('time used:'+(end-start)+'ms');
+		});
+
+	</script>
+</body>
+</html>
