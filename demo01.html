@@ -28,7 +28,7 @@
 
 			function testajax() {
 				$.getJSON('js/sample-data.js', function(data){
-					console.log(data);
+					console.info(data);
 				});
 			}
 
@@ -36,20 +36,26 @@
 				return $.getScript(f, cb);
 			}
 
-			var start = new Date().getTime();
+			try {
+				var start = new Date().getTime();
 
-			//插入HTML
-			test01(5000);
+				//插入HTML
+				test01(5000);
 
-			//AJAX请求
-			//testajax();
+				//AJAX请求
+				//testajax();
 
-			//加载JS
-			//loadjs('js/demo.js');
+				//加载JS
+				//loadjs('js/demo.js');
 
-			var end = new Date().getTime();
+				var end = new Date().getTime();
 
-			console.log('time used:'+(end-start)+'ms');
+				console.log('time used:'+(end-start)+'ms');
+			} catch (e) {
+				console.log(e);
+			} finally {
+				//todo
+			}
 		});
 
 	</script>
