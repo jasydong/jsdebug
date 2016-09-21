@@ -42,6 +42,18 @@
 				console.info(p2);
 			}
 
+			function testarray() {
+				var a1, a2;
+
+				a1 = [1,2,3];
+				a2 = a1;
+
+				a2[0] = 50;
+
+				console.info(a1);
+				console.info(a2);
+			}
+
 			function loadjs(f, cb) {
 				return $.getScript(f, cb);
 			}
