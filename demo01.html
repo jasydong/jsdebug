@@ -12,6 +12,7 @@
 		$(function(){
 
 			function test01(len) {
+				//debugger;
 				for (var i=0; i<len; i++) {
 					$('.content').append('<div>text '+i+'</div>');
 				}
@@ -25,13 +26,79 @@
 				$('.content').append(html);
 			}
 
-			var start = new Date().getTime();
+			function testajax() {
+				$.getJSON('js/sample-data.js', function(data){
+					console.info(data);
+				});
+			}
 
-			test01(5000);
+			function testobj() {
+				var p1=p2={"x":0,"y":0};
 
-			var end = new Date().getTime();
+				p1.x = 100;
+				p2.y = 5;
 
-			console.log('time used:'+(end-start)+'ms');
+				console.info(p1);
+				console.info(p2);
+			}
+
+			function testarray() {
+				var a1, a2;
+
+				a1 = [1,2,3];
+				a2 = a1;
+
+				a2[0] = 50;
+
+				console.info(a1);
+				console.info(a2);
+			}
+
+            function testxhr(url) {
+                var xhr = new XMLHttpRequest;
+
+                if (xhr && url) {
+                    xhr.open('GET', url);
+                    xhr.send();
+                    xhr.onreadystatechange = function(){
+                        if (xhr.readyState == 4) {
+                            console.log(xhr.responseText);
+                        }
+                    };
+                }
+                
+            }
+
+			function loadjs(f, cb) {
+				return $.getScript(f, cb);
+			}
+
+			try {
+				var start = new Date().getTime();
+
+				//测试JS对象
+				testobj();
+
+				//测试插入HTML
+				//test01(5000);
+
+				//测试AJAX请求
+				//testajax();
+
+				//加载JS
+				//loadjs('js/demo.js');
+                
+                //测试XHR(请改为你自己的请求地址)
+                testxhr('http://www.baidu.com/');
+
+				var end = new Date().getTime();
+
+				console.info('time used:'+(end-start)+'ms');
+			} catch (e) {
+				console.log(e);
+			} finally {
+				//todo
+			}
 		});
 
 	</script>
